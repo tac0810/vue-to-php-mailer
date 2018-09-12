@@ -1,5 +1,1 @@
-# WP
-```
-atooshi-master
-yR(4GLHX8JSOnoa&Oz
-```
+# I hope to write "Getting Standard" here later...

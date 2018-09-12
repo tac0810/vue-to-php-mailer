@@ -1,0 +1,10 @@
+<IfModule mod_siteguard.c>
+
+  <Files ~ "mail\.php$">
+    SiteGuard_User_ExcludeSig all
+  </Files>
+
+  <Files ~ "test\.php$">
+      SiteGuard_User_ExcludeSig all
+    </Files>
+</IfModule>

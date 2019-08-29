@@ -21,7 +21,12 @@ if (platform.name === "IE") {
   $html.classList.add("is-ie");
 }
 
-if (platform.os.toString().toLowerCase().indexOf("win") !== -1) {
+if (
+  platform.os
+    .toString()
+    .toLowerCase()
+    .indexOf("win") !== -1
+) {
   let $html = document.querySelector("html");
   $html.classList.add("is-windows");
 }

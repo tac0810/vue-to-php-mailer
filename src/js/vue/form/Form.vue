@@ -105,7 +105,9 @@ export default {
   methods: {
     confirm() {
       this.validAll = true;
-      const customInputs = Object.keys(this.$refs).filter(v => /^CustomInput/.test(v))
+      const customInputs = Object.keys(this.$refs).filter(v =>
+        /^CustomInput/.test(v)
+      );
       customInputs.forEach((CustomInput, index) => {
         if (this.formValues[index].require || this.formValues[index].value) {
           this.$refs[CustomInput][0].checkTheValue(
@@ -147,7 +149,7 @@ export default {
       })
         .then(response => {
           this.mode = "complete";
-          console.log( response.data )
+          console.log(response.data);
         })
         .catch(error => {
           console.log(error);

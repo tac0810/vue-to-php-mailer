@@ -50,6 +50,10 @@ class Mailer
 
         $body = $this->_evaluate(ROOT . '/_inc_/mail/admin.php', $this->mailVars);
         $this->_setContent($subject, $body);
+
+        if (!$this->DEBUG) {
+            $this->writeMailLog($body);
+        }
     }
 
     private function _setContent($subject, $body)
@@ -64,6 +68,30 @@ class Mailer
         ob_start();
         include $viewFile;
         return ob_get_clean();
+    }
+
+    private function writeMailLog($message)
+    {
+        $path = ROOT . '/_inc_/logs';
+        $this->checkDir($path);
+        $cnt = 0;
+        $file_name = date('YmdHis');
+        if (file_exists($path . $file_name . sprintf('%03d', $cnt) . '.txt')) {
+            while (true) {
+                $cnt++;
+                if (!file_exists($path . DS . $file_name . sprintf('%03d', $cnt) . '.txt')) break;
+            }
+        }
+        $file_name = $file_name . sprintf('%03d', $cnt) . '.txt';
+        file_put_contents($path . DS . $file_name, $message, FILE_APPEND | LOCK_EX);
+    }
+
+    private function checkDir($dir)
+    {
+        if (!file_exists($dir) || !is_dir($dir)) {
+            mkdir($dir, 0777, true);
+            chmod($dir, 0777);
+        }
     }
 
 }

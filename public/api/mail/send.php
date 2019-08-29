@@ -1,5 +1,6 @@
 <?php
 define('ROOT', dirname(__FILE__));
+define('DS', DIRECTORY_SEPARATOR);
 
 header('Content-Type: application/json; charset=utf-8');
 date_default_timezone_set('Asia/Tokyo');
@@ -22,9 +23,10 @@ try {
     $config = $config['mailer'];
 
     $admin = $config['admin'];
+    $body = json_decode($_POST['body']);
 
     $mailer = new Mailer([
-        'body' => json_decode($_POST['body']),
+        'body' => $body,
         'admin' => $admin[0],
         'site_name' => $config['site_name'],
     ], $_POST['mail'], $admin);

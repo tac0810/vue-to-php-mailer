@@ -1,5 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 public/api/mail/_inc_/vendor
+public/api/mail/_inc_/logs/*
+!public/api/mail/_inc_/logs/.keep
 .DS_Store
 .idea/
 node_modules/

@@ -15,7 +15,6 @@ $token = CSRFTokenManager::getCSRFToken();
 </head>
 <body>
 <main data-controller="form">
-  <div id="app"></div>
   <div id="vue-form"></div>
   <label for="csrf-token" hidden>
     <input type="text" hidden value="<?php echo $token; ?>" id="csrf-token">

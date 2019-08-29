@@ -92,15 +92,13 @@ export default {
   name: "Form",
   created() {
     this.formList = config;
-    this.formList.forEach((list, index) => {
-      this.formValues[index] = {
-        label: list.label,
-        value: "",
-        key: list.key,
-        require: list.require,
-        isValid: !list.require
-      };
-    });
+    this.formValues = config.map(list => ({
+      label: list.label,
+      value: "",
+      key: list.key,
+      require: list.require,
+      isValid: !list.require
+    }));
   },
   methods: {
     confirm() {
@@ -114,9 +112,7 @@ export default {
             this.formValues[index].value
           );
         }
-        if (!this.formValues[index].isValid) {
-          this.validAll = false;
-        }
+        this.validAll = this.formValues[index].isValid;
       });
       if (this.validAll) {
         this.mode = "confirm";
@@ -126,30 +122,27 @@ export default {
       this.mode = "input";
     },
     send() {
-      let mailAddress = "";
       // search mail address
-      this.formValues.some(formValue => {
-        if ("mail" === formValue.key) {
-          mailAddress = formValue.value;
-          return true;
-        }
-      });
-      let data = new URLSearchParams();
-      data.append("csrf_token", document.getElementById("csrf-token").value);
-      data.append("mail", mailAddress);
+      const mailAddress = this.formValues.find(
+        formValue => "mail" === formValue.key
+      );
+      const data = new URLSearchParams();
+      const token = document.getElementById("csrf-token").value;
+
+      axios.defaults.headers["X-CSRF-TOKEN"] = token;
+
+      data.append("csrf_token", token);
+      data.append("mail", mailAddress.value);
       data.append("body", JSON.stringify(this.formValues));
-      axios.defaults.headers["X-CSRF-TOKEN"] = document.getElementById(
-        "csrf-token"
-      ).value;
+
       axios({
         method: "post",
         url: "/api/mail/send.php",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         data
       })
-        .then(response => {
+        .then(() => {
           this.mode = "complete";
-          console.log(response.data);
         })
         .catch(error => {
           console.log(error);

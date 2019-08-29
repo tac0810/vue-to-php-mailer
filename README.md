@@ -108,8 +108,9 @@ $ composer install
 - `text`
 - `select`
 - `textarea`
-- `radio`  
-  初期値は `text` 。
+- `radio`
+  
+初期値は `text` 。
 
 #### `validation` : Validator
 
@@ -126,7 +127,8 @@ $ composer install
 - PAT_PHONENUMBER_WITH_HYPHEN
 - PAT_PHONENUMBER
 - PAT_ZIPCODE
-  `src/js/vue/form/utils/Validator.js` につなぎこむためのものです。
+  
+`src/js/vue/form/utils/Validator.js` につなぎこむためのものです。
 
 #### `options` : Object
 
@@ -198,22 +200,22 @@ $ composer install
 ```
 
 #### `require` : Boolean
-入力が必須かどうかを設定できます。
+入力が必須かどうかを設定できます。  
 `false` でかつ、 `validation` が有効の場合。
 - フォームが空であれば `validation` を無視。
 - フォームに値があれば `validation` が有効化。
+  
 初期値は `false` 。
 
 #### `errorMsg` : Array
-エラー時のメッセージを指定できます。
+エラー時のメッセージを指定できます。  
 長さ2の配列を使用します。
 - `errorMsg[0]` には `require` に合格しなかった場合のエラーメッセージ
-- `errorMsg[1]` には `validation` に合格しなかった場合のエラーメッセージ
-が表示されます。
+- `errorMsg[1]` には `validation` に合格しなかった場合のエラーメッセージが表示されます。
+  
 初期値は `["入力されていません", "形式が違います"]` 。;
 
 # Log出力
-メールが万が一送信されなかった時のために
-`public/api/mail/_inc_/logs` 以下にログが吐かれるようになっています。
-デバッグモードの際は作成されません。
+メールが万が一送信されなかった時のために `public/api/mail/_inc_/logs` 以下にログが吐かれるようになっています。  
+デバッグモードの際は作成されません。  
 自動で削除されないため数年に一度ファイルを掃除してあげてください。

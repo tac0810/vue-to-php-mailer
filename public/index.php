@@ -1,7 +1,7 @@
 <?php
-require_once './api/_inc_/utils/CSRFTokenManager.php';
+require_once './api/mail/_inc_/utils/CSRFTokenManager.php';
+use CSRFTokenManager\CSRFTokenManager;
 $token = CSRFTokenManager::getCSRFToken();
-
 ?>
 
 <!DOCTYPE html>

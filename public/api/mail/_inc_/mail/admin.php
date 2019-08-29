@@ -13,8 +13,7 @@
 
 <?php
 
-$values = json_decode( $body );
-foreach ( $values as $key => $value ): ?>
+foreach ( $body as $key => $value ): ?>
 
 ■ <?php echo htmlspecialchars( $value->label ); ?>
 

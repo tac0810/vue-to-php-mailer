@@ -6,6 +6,8 @@
  * Time: 18:48
  */
 
+namespace CSRFTokenManager;
+
 class CSRFTokenManager {
     public static function getCSRFToken() {
         session_start();

@@ -75,7 +75,7 @@
 			this.formValue.label = this.formElement.label;
 		},
 		methods: {
-			checkTheValue(value, event) {
+			checkTheValue(value) {
 				let isValid = null !== this.formElement.validation ? Validator.pattern(value, this.formElement.validation) : true,
 					isEmpty = this.formElement.require ? Validator.isEmpty(value) : true;
 
@@ -114,6 +114,7 @@
 					label: '',
 					value: '',
 					key: '',
+					require: false,
 					isValid: false
 				}
 			}

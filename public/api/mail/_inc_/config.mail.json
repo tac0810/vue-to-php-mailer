@@ -1,13 +1,14 @@
 {
   "mailer": {
     "debug": true,
-    "from": [
-      {
-        "address": "takaaki@quappa.jp",
-        "name": "From Admin"
-      }
+    "from": {
+      "mail": "sample@sample.jp",
+      "name": "From Admin"
+    },
+    "admin": [
+      "info@sample.jp",
+      "dev@sample.jp"
     ],
-    "admin": ["info@quappa.jp"],
     "subject": "お問い合わせありがとうございました",
     "site_name": "Vue to PHP Mailer"
   },

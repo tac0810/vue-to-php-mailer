@@ -22,7 +22,7 @@
                 :formElement="form"
                 v-model="formValues[index]"
                 :ref="`CustomInput-${form.key}`"
-              ></CustomInput>
+              />
             </td>
           </tr>
         </table>
@@ -97,7 +97,8 @@ export default {
         label: list.label,
         value: "",
         key: list.key,
-        isValid: !list.require && null === list.validation
+        require: list.require,
+        isValid: !list.require
       };
     });
   },
@@ -131,7 +132,7 @@ export default {
           return true;
         }
       });
-      const data = new URLSearchParams();
+      let data = new URLSearchParams();
       data.append("csrf_token", document.getElementById("csrf-token").value);
       data.append("mail", mailAddress);
       data.append("body", JSON.stringify(this.formValues));
@@ -140,13 +141,13 @@ export default {
       ).value;
       axios({
         method: "post",
-        url: "/api/mail.php",
+        url: "/api/mail/send.php",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         data
       })
         .then(response => {
           this.mode = "complete";
-          // console.log( response )
+          console.log( response.data )
         })
         .catch(error => {
           console.log(error);

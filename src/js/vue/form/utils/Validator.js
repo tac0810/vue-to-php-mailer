@@ -43,7 +43,7 @@ export default class Validator {
      * @constructor
      */
     static get PAT_ZENKAKU() {
-        return /^[ 　]*^[0-9A-Za-z -~｡-ﾟ]*[ 　]*$/;
+        return /^[^\x01-\x7E\xA1-\xDF]+$/;
     }
 
     /**
@@ -52,7 +52,7 @@ export default class Validator {
      * @constructor
      */
     static get PAT_KATAKANA() {
-        return /^ァ-ン/;
+        return /^[ァ-ヶー　]*$/;
     }
 
     /**

@@ -1,0 +1,113 @@
+{
+  "mailer": {
+    "debug": true,
+    "from": [
+      {
+        "address": "takaaki@quappa.jp",
+        "name": "From Admin"
+      }
+    ],
+    "admin": ["info@quappa.jp"],
+    "subject": "お問い合わせありがとうございました",
+    "site_name": "Vue to PHP Mailer"
+  },
+  "forms": [
+    {
+      "label": "お問い合わせ項目",
+      "key": "select_1",
+      "type": "select",
+      "require": true,
+      "options": {
+        "data": [
+          {
+            "label": "選択してください",
+            "value": null
+          },
+          {
+            "label": "SELECT0",
+            "value": "you chose SELECT0"
+          },
+          {
+            "label": "SELECT1",
+            "value": "you chose SELECT1"
+          },
+          {
+            "label": "SELECT2",
+            "value": "you chose SELECT2"
+          },
+          {
+            "label": "SELECT3",
+            "value": "you chose SELECT3"
+          }
+        ]
+      }
+    },
+    {
+      "label": "会社名",
+      "key": "org_name",
+      "placeholder": "placeholder",
+      "type": "text",
+      "require": true
+    },
+    {
+      "label": "所属部署",
+      "key": "department",
+      "placeholder": "教育部",
+      "type": "text"
+    },
+    {
+      "label": "氏名（全角）",
+      "key": "name",
+      "placeholder": "山田 太郎",
+      "validation": "PAT_ZENKAKU",
+      "type": "text",
+      "require": true
+    },
+    {
+      "label": "氏名フリガナ（全角カナ）",
+      "key": "name_kana",
+      "placeholder": "ヤマダ タロウ",
+      "type": "text",
+      "validation": "PAT_KATAKANA",
+      "require": true
+    },
+    {
+      "label": "メールアドレス（半角英数字）",
+      "key": "mail",
+      "placeholder": "sample@example.com",
+      "type": "email",
+      "validation": "PAT_EMAIL",
+      "require": true
+    },
+    {
+      "label": "メールアドレス確認（半角英数字）",
+      "key": "re_mail",
+      "placeholder": "sample@example.com",
+      "type": "email",
+      "validation": "PAT_EMAIL",
+      "require": true,
+      "options": {
+        "re_enter": "mail"
+      },
+      "errorMsg": ["入力されていません", "一致しません"]
+    },
+    {
+      "label": "電話番号（半角数字）",
+      "key": "tel",
+      "placeholder": "09012345678",
+      "type": "tel",
+      "validation": "PAT_PHONENUMBER"
+    },
+    {
+      "label": "お問い合わせ内容",
+      "key": "content",
+      "placeholder": "入力してください",
+      "type": "textarea",
+      "require": true,
+      "options": {
+        "rows": 10,
+        "cols": 80
+      }
+    }
+  ]
+}

@@ -14,10 +14,13 @@ $token = CSRFTokenManager::getCSRFToken();
 	<title>Vue to PHP Mailer</title>
 </head>
 <body>
-<div id="vue-form"></div>
-<label for="csrf-token" hidden>
-	<input type="text" hidden value="<?php echo $token; ?>" id="csrf-token">
-</label>
+<main data-controller="form">
+  <div id="app"></div>
+  <div id="vue-form"></div>
+  <label for="csrf-token" hidden>
+    <input type="text" hidden value="<?php echo $token; ?>" id="csrf-token">
+  </label>
+</main>
 
 <script src="./assets/js/vendor.bundle.js"></script>
 <script src="./assets/js/main.bundle.js"></script>
